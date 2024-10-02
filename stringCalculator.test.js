@@ -36,4 +36,8 @@ describe('StringCalculator', () => {
     test('should throw an error for negative numbers', () => {
         expect(() => calculateFunc.addition("1,-2")).toThrow("negatives not allowed: -2");
     });
+
+    test('should throw an error for multiple negative numbers', () => {
+        expect(() => calculateFunc.addition("1,-2,-3,-4")).toThrow("negatives not allowed: -2,-3,-4");
+    });
 })
