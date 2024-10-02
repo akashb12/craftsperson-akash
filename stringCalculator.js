@@ -4,9 +4,8 @@ class StringCalculator {
         if (str == "") {
             return sum;
         }
-        let num = str.split(",").map((num) => {
+        let num = str.split(/[\n,]/).map((num) => {
             sum += Number(num)
-
         })
         return sum
     }
@@ -14,6 +13,6 @@ class StringCalculator {
 
 // for testing purpose
 let test = new StringCalculator()
-console.log(test.addition("1,2"));
+console.log(test.addition("1\n2,3"));
 
 module.exports = StringCalculator;

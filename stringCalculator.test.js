@@ -19,5 +19,9 @@ describe('StringCalculator', () => {
 
     test('should handle an unknown amount of numbers', () => {
         expect(calculateFunc.addition("1,2,3,4")).toBe(10);
-      });
+    });
+
+    test('should handle new lines as delimiters', () => {
+        expect(calculateFunc.addition("1\n2,3\n4")).toBe(10);
+    });
 })
