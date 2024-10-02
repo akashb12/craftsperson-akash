@@ -4,7 +4,14 @@ class StringCalculator {
         if (str == "") {
             return sum;
         }
-        let num = str.split(/[\n,]/).map((num) => {
+        let delimiters = /[\n,]/
+        if (str.startsWith("//")) {
+            const delimiterEndIndex = str.indexOf("\n");
+            let customDelimiter = str.substring(2, delimiterEndIndex);
+            str = str.substring(delimiterEndIndex + 1);
+            delimiters = new RegExp(`[${customDelimiter}]`);;
+        }
+        let num = str.split(delimiters).map((num) => {
             sum += Number(num)
         })
         return sum
@@ -13,6 +20,6 @@ class StringCalculator {
 
 // for testing purpose
 let test = new StringCalculator()
-console.log(test.addition("1\n2,3"));
+console.log(test.addition("//;\n1;2;3"));
 
 module.exports = StringCalculator;
