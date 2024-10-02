@@ -11,15 +11,20 @@ class StringCalculator {
             str = str.substring(delimiterEndIndex + 1);
             delimiters = new RegExp(`[${customDelimiter}]`);;
         }
-        let num = str.split(delimiters).map((num) => {
+        str.split(delimiters).map((num) => {
             sum += Number(num)
         })
+        let negativeNumbers = str.split(delimiters).filter((num) => num < 0);
+        if(negativeNumbers.length) {
+             throw new Error(`negatives not allowed: ${negativeNumbers.join()}`);
+        }
+        
         return sum
     }
 };
 
 // for testing purpose
-let test = new StringCalculator()
-console.log(test.addition("//;\n1;2;3"));
+// let test = new StringCalculator()
+// console.log(test.addition("1,-2,-2,-4"));
 
 module.exports = StringCalculator;

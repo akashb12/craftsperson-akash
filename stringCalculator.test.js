@@ -32,4 +32,8 @@ describe('StringCalculator', () => {
     test('should handle custom delimiters -', () => {
         expect(calculateFunc.addition("//-\n1-2-3")).toBe(6);
     });
+
+    test('should throw an error for negative numbers', () => {
+        expect(() => calculateFunc.addition("1,-2")).toThrow("negatives not allowed: -2");
+    });
 })
